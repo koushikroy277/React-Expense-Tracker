@@ -14,11 +14,12 @@ export const Context = (props) => {
   const addTrans = (trans) =>
     dispatch({ type: "ADD_TRANSACTION", payload: trans });
 
-  console.log(transaction);
+  const removeAll = () => 
+  dispatch({ type: "REMOVE_ALL" })
 
   return (
     <div>
-      <ExpTrackCon.Provider value={{ deleteTrans, addTrans, transaction }}>
+      <ExpTrackCon.Provider value={{ deleteTrans, addTrans, removeAll, transaction }}>
         {props.children}
       </ExpTrackCon.Provider>
     </div>
