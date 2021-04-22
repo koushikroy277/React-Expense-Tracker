@@ -7,7 +7,7 @@ import { SpeechProvider } from "@speechly/react-client";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <SpeechProvider appId="7d9a2a52-e2ea-48ea-b85d-3e7c78e816f8" language="en-US">
+  <SpeechProvider appId="92f268bb-f070-45f5-9831-935abdd658b8" language="en-US">
     <Context>
       <App />
     </Context>

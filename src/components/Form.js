@@ -30,6 +30,19 @@ const Form = () => {
   const { addTrans } = React.useContext(ExpTrackCon);
   const { segment } = useSpeechContext();
 
+  const createTrans = () => {
+    if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
+    
+    const transaction = {
+      ...formData,
+      amount: Number(formData.amount),
+      id: uuid(),
+    };
+
+    addTrans(transaction);
+    setFormData(initialState);
+  };
+
   React.useEffect(() => {
     if (segment) {
       if (segment.intent.intent === "add_expense") {
@@ -88,19 +101,6 @@ const Form = () => {
       }
     }
   }, [segment]);
-
-  const createTrans = () => {
-    if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
-    
-    const transaction = {
-      ...formData,
-      amount: Number(formData.amount),
-      id: uuid(),
-    };
-
-    addTrans(transaction);
-    setFormData(initialState);
-  };
 
   const selectedCat =
     formData.type === "Income" ? incomeCategories : expenseCategories;
